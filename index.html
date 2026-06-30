@@ -13,20 +13,16 @@
     }
 
     :root {
-      --bg-1: #06040c;
-      --bg-2: #120b24;
-      --bg-3: #0a0914;
-      --pink: #ff4fcf;
-      --pink-2: #ff9ce9;
-      --cyan: #38f5ff;
-      --cyan-2: #b7fcff;
-      --gold: #ffd56e;
-      --gold-2: #ffb938;
+      --black: #050505;
+      --dark: #0d0d12;
+      --card: rgba(255,255,255,0.08);
+      --gold: #ffd166;
+      --gold2: #ff9f1c;
+      --pink: #ff3cac;
+      --violet: #784ba0;
+      --cyan: #2bffea;
       --white: #ffffff;
-      --soft: rgba(255,255,255,0.78);
-      --panel: rgba(16, 12, 30, 0.68);
-      --line: rgba(255,255,255,0.10);
-      --shadow: 0 22px 55px rgba(0,0,0,0.45);
+      --muted: rgba(255,255,255,0.72);
     }
 
     body {
@@ -35,313 +31,216 @@
       color: var(--white);
       display: flex;
       justify-content: center;
-      padding: 24px 14px;
+      padding: 20px 12px;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 10% 10%, rgba(255, 79, 207, 0.18), transparent 23%),
-        radial-gradient(circle at 90% 10%, rgba(56, 245, 255, 0.15), transparent 22%),
-        radial-gradient(circle at 50% 100%, rgba(255, 213, 110, 0.10), transparent 26%),
-        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+        radial-gradient(circle at top left, rgba(255, 60, 172, 0.26), transparent 28%),
+        radial-gradient(circle at top right, rgba(43, 255, 234, 0.18), transparent 28%),
+        radial-gradient(circle at bottom, rgba(255, 209, 102, 0.14), transparent 32%),
+        linear-gradient(145deg, #050509 0%, #101018 48%, #020203 100%);
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.35;
       pointer-events: none;
-      background:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.45;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 25% 30%, rgba(255,79,207,0.14), transparent 18%),
-        radial-gradient(circle at 75% 25%, rgba(56,245,255,0.10), transparent 16%);
-      filter: blur(30px);
     }
 
     .page {
       width: 100%;
-      max-width: 1040px;
+      max-width: 980px;
       position: relative;
       z-index: 1;
     }
 
-    .hero {
-      position: relative;
+    .app-card {
       overflow: hidden;
       border-radius: 36px;
-      border: 1px solid rgba(255,255,255,0.08);
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-        rgba(8, 7, 19, 0.74);
+        linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.13);
       box-shadow:
-        0 30px 80px rgba(0,0,0,0.55),
-        0 0 32px rgba(255,79,207,0.10),
-        0 0 28px rgba(56,245,255,0.08);
-      padding: 18px;
-      margin-bottom: 24px;
-      backdrop-filter: blur(12px);
+        0 28px 80px rgba(0,0,0,0.60),
+        inset 0 0 35px rgba(255,255,255,0.035);
+      backdrop-filter: blur(16px);
+      margin-bottom: 22px;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,79,207,0.12), transparent 24%),
-        radial-gradient(circle at 85% 22%, rgba(56,245,255,0.10), transparent 24%),
-        linear-gradient(120deg, transparent, rgba(255,255,255,0.04), transparent);
-    }
-
-    .hero-inner {
+    .cover {
       position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .hero-left,
-    .hero-right {
-      border-radius: 30px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero-left {
-      padding: 30px 26px;
+      min-height: 390px;
+      padding: 26px;
+      display: flex;
+      align-items: flex-end;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        rgba(11, 9, 24, 0.72);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: inset 0 0 24px rgba(255,255,255,0.03);
-    }
-
-    .hero-right {
-      min-height: 620px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(to top, rgba(8, 8, 18, 0.95), rgba(8, 8, 18, 0.20)),
+        linear-gradient(to top, rgba(0,0,0,0.96), rgba(0,0,0,0.18)),
         url("rey-slot.jpg");
       background-size: cover;
       background-position: center;
-      box-shadow:
-        0 24px 60px rgba(0,0,0,0.35),
-        inset 0 0 38px rgba(255,255,255,0.04);
     }
 
-    .hero-right::before {
+    .cover::before {
       content: "";
       position: absolute;
       inset: 0;
-      pointer-events: none;
       background:
-        radial-gradient(circle at 25% 75%, rgba(255,79,207,0.22), transparent 20%),
-        radial-gradient(circle at 80% 15%, rgba(56,245,255,0.18), transparent 22%);
+        radial-gradient(circle at 20% 20%, rgba(255,60,172,0.28), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(43,255,234,0.22), transparent 26%),
+        linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent);
+      pointer-events: none;
     }
 
-    .hero-right::after {
-      content: "ROYAL SLOTS";
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
     }
 
-    .badge {
+    .tag {
       display: inline-block;
-      padding: 10px 16px;
+      padding: 9px 16px;
       border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: var(--cyan);
       font-size: 12px;
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--cyan-2);
-      background: rgba(56,245,255,0.10);
-      border: 1px solid rgba(56,245,255,0.18);
-      box-shadow: 0 0 18px rgba(56,245,255,0.10);
-      margin-bottom: 16px;
-    }
-
-    .logo-wrap {
       margin-bottom: 14px;
+      box-shadow: 0 0 18px rgba(43,255,234,0.12);
     }
 
-    .logo-top {
-      display: block;
-      font-size: clamp(42px, 7vw, 84px);
+    .logo {
+      font-size: clamp(44px, 8vw, 88px);
       font-weight: 1000;
-      line-height: 0.94;
+      line-height: 0.92;
+      text-transform: uppercase;
       letter-spacing: 1px;
-      text-transform: uppercase;
-      background: linear-gradient(180deg, #ffe9ff 0%, #ff94ea 22%, #ff4fcf 55%, #8228ff 100%);
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #ffffff 0%, #ffd166 32%, #ff9f1c 68%, #fff0b5 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-shadow:
-        0 2px 0 rgba(255,255,255,0.15),
-        0 4px 0 #8d1367,
-        0 7px 0 #65084a,
-        0 10px 18px rgba(0,0,0,0.45),
-        0 0 24px rgba(255,79,207,0.34);
-      filter: drop-shadow(0 0 20px rgba(255,79,207,0.18));
+        0 2px 0 rgba(255,255,255,0.18),
+        0 5px 0 rgba(97,52,0,0.80),
+        0 10px 25px rgba(0,0,0,0.85);
+      filter:
+        drop-shadow(0 0 18px rgba(255,209,102,0.28))
+        drop-shadow(0 0 26px rgba(255,60,172,0.12));
     }
 
-    .logo-bottom {
-      display: inline-block;
-      margin-top: 6px;
-      font-size: clamp(26px, 4vw, 44px);
-      font-weight: 1000;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      background: linear-gradient(180deg, #ffffff 0%, #d7feff 30%, #58f7ff 62%, #0e9fcb 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow:
-        0 2px 0 rgba(255,255,255,0.14),
-        0 4px 0 #0c6c79,
-        0 7px 0 #06454d,
-        0 10px 18px rgba(0,0,0,0.42),
-        0 0 22px rgba(56,245,255,0.30);
-    }
-
-    .title-line {
-      width: 170px;
-      height: 4px;
-      margin: 16px 0 18px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--pink), var(--cyan), transparent);
-      box-shadow:
-        0 0 14px rgba(255,79,207,0.45),
-        0 0 14px rgba(56,245,255,0.35);
-    }
-
-    .sub {
-      font-size: clamp(18px, 2.8vw, 28px);
+    .headline {
+      font-size: clamp(20px, 4vw, 32px);
       font-weight: 900;
-      color: var(--gold);
-      margin-bottom: 10px;
-      text-shadow:
-        0 2px 0 rgba(100, 58, 0, 0.85),
-        0 0 10px rgba(255, 213, 110, 0.28);
+      color: #fff;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 14px #000;
     }
 
     .desc {
-      max-width: 560px;
-      font-size: clamp(15px, 2.3vw, 18px);
-      line-height: 1.55;
-      color: var(--soft);
-      margin-bottom: 20px;
+      max-width: 620px;
+      font-size: clamp(15px, 3vw, 18px);
+      line-height: 1.45;
+      color: rgba(255,255,255,0.82);
+      text-shadow: 0 3px 12px #000;
     }
 
-    .feature-row {
+    .panel {
+      padding: 20px;
+      background:
+        radial-gradient(circle at top left, rgba(255,60,172,0.11), transparent 28%),
+        radial-gradient(circle at top right, rgba(43,255,234,0.08), transparent 28%),
+        rgba(7,7,10,0.72);
+    }
+
+    .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .feature {
-      padding: 14px 12px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
+    .stat {
+      padding: 14px 10px;
+      border-radius: 20px;
       text-align: center;
+      background: rgba(255,255,255,0.065);
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: inset 0 0 14px rgba(255,255,255,0.03);
     }
 
-    .feature strong {
+    .stat strong {
       display: block;
-      font-size: 18px;
       color: var(--gold);
+      font-size: 20px;
       margin-bottom: 4px;
     }
 
-    .feature span {
+    .stat span {
+      color: rgba(255,255,255,0.74);
       font-size: 13px;
-      color: rgba(255,255,255,0.78);
       font-weight: 700;
     }
 
     .socials {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      flex-wrap: wrap;
+      margin-bottom: 18px;
     }
 
     .social {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
+      min-height: 74px;
+      border-radius: 22px;
       display: grid;
       place-items: center;
       color: white;
-      font-size: 28px;
+      font-size: 31px;
       font-weight: 900;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.16);
       box-shadow:
-        0 14px 24px rgba(0,0,0,0.34),
-        inset 0 0 12px rgba(255,255,255,0.08);
+        0 12px 26px rgba(0,0,0,0.35),
+        inset 0 0 13px rgba(255,255,255,0.12);
       transition: 0.25s ease;
     }
 
     .social:hover {
-      transform: translateY(-4px) scale(1.04);
+      transform: translateY(-4px) scale(1.03);
       filter: brightness(1.14);
     }
 
-    .wa { background: linear-gradient(135deg, #128c4a, #25D366); }
-    .fb { background: linear-gradient(135deg, #0d47a1, #1877F2); }
-    .ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
-    .tg { background: linear-gradient(135deg, #0077b6, #229ED9); }
-
     .links {
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
 
     .btn {
       position: relative;
       display: flex;
       align-items: center;
-      gap: 16px;
-      min-height: 82px;
-      padding: 14px 56px 14px 14px;
-      color: #ffffff;
+      gap: 15px;
+      min-height: 78px;
+      padding: 13px 54px 13px 14px;
+      color: #fff;
       text-decoration: none;
       border-radius: 24px;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-        linear-gradient(90deg, rgba(15,11,30,0.95), rgba(17,17,39,0.98));
-      border: 1px solid rgba(255,255,255,0.08);
+        linear-gradient(135deg, rgba(255,255,255,0.105), rgba(255,255,255,0.035)),
+        rgba(11, 11, 16, 0.84);
+      border: 1px solid rgba(255,255,255,0.10);
       box-shadow:
-        0 18px 38px rgba(0,0,0,0.42),
-        inset 0 0 16px rgba(255,255,255,0.03);
-      backdrop-filter: blur(10px);
+        0 16px 34px rgba(0,0,0,0.42),
+        inset 0 0 16px rgba(255,255,255,0.035);
       transition: 0.25s ease;
     }
 
@@ -349,30 +248,28 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.10), transparent);
-      transform: translateX(-115%);
-      transition: 0.35s ease;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
+      transform: translateX(-120%);
+      transition: 0.36s ease;
     }
 
     .btn::after {
-      content: "➜";
+      content: "→";
       position: absolute;
       right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 26px;
-      font-weight: 900;
       color: var(--gold);
-      text-shadow: 0 0 14px rgba(255,213,110,0.45);
+      font-size: 30px;
+      font-weight: 900;
+      text-shadow: 0 0 14px rgba(255,209,102,0.6);
     }
 
     .btn:hover {
       transform: translateY(-4px);
-      border-color: rgba(255,255,255,0.14);
+      border-color: rgba(255,209,102,0.35);
       box-shadow:
-        0 22px 46px rgba(0,0,0,0.52),
-        0 0 18px rgba(255,79,207,0.10),
-        0 0 18px rgba(56,245,255,0.08);
+        0 22px 42px rgba(0,0,0,0.55),
+        0 0 24px rgba(255,60,172,0.10),
+        0 0 24px rgba(43,255,234,0.08);
     }
 
     .btn:hover::before {
@@ -382,17 +279,17 @@
     .icon {
       position: relative;
       z-index: 1;
-      min-width: 56px;
-      width: 56px;
-      height: 56px;
+      min-width: 54px;
+      width: 54px;
+      height: 54px;
       border-radius: 18px;
       display: grid;
       place-items: center;
-      font-size: 28px;
+      font-size: 27px;
       font-weight: 900;
       box-shadow:
-        0 10px 18px rgba(0,0,0,0.30),
-        inset 0 0 12px rgba(255,255,255,0.08);
+        0 9px 18px rgba(0,0,0,0.34),
+        inset 0 0 12px rgba(255,255,255,0.12);
     }
 
     .text {
@@ -400,79 +297,73 @@
       z-index: 1;
       flex: 1;
       text-align: center;
-      font-size: clamp(18px, 3vw, 24px);
+      font-size: clamp(18px, 3.5vw, 24px);
       font-weight: 900;
-      letter-spacing: 0.3px;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.55);
+      letter-spacing: 0.2px;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.58);
     }
+
+    .wa { background: linear-gradient(135deg, #128c4a, #25D366); }
+    .fb { background: linear-gradient(135deg, #0d47a1, #1877F2); }
+    .ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .tg { background: linear-gradient(135deg, #0077b6, #229ED9); }
 
     .footer {
-      margin-top: 24px;
-      padding: 18px 14px;
+      margin-top: 22px;
+      padding: 17px 14px;
       text-align: center;
-      color: rgba(255,255,255,0.76);
+      color: rgba(255,255,255,0.75);
       font-size: 13px;
       line-height: 1.45;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.26);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
     }
 
-    @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-right {
-        min-height: 420px;
-      }
-    }
-
-    @media (max-width: 560px) {
+    @media (max-width: 620px) {
       body {
-        padding: 18px 10px;
+        padding: 14px 10px;
       }
 
-      .hero {
-        padding: 14px;
-        border-radius: 24px;
+      .app-card {
+        border-radius: 26px;
       }
 
-      .hero-left,
-      .hero-right {
-        border-radius: 22px;
+      .cover {
+        min-height: 360px;
+        padding: 20px;
       }
 
-      .hero-left {
-        padding: 22px 16px;
+      .panel {
+        padding: 16px;
       }
 
-      .hero-right {
-        min-height: 320px;
-      }
-
-      .feature-row {
+      .stats {
         grid-template-columns: 1fr;
+      }
+
+      .socials {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 9px;
       }
 
       .social {
-        width: 52px;
-        height: 52px;
+        min-height: 58px;
+        border-radius: 17px;
         font-size: 25px;
-        border-radius: 16px;
       }
 
       .btn {
         min-height: 72px;
         border-radius: 20px;
-        gap: 12px;
         padding: 12px 44px 12px 12px;
+        gap: 12px;
       }
 
       .btn::after {
         right: 14px;
-        font-size: 22px;
+        font-size: 24px;
       }
 
       .icon {
@@ -489,77 +380,76 @@
 <body>
   <main class="page">
 
-    <section class="hero">
-      <div class="hero-inner">
+    <section class="app-card">
 
-        <div class="hero-left">
-          <div class="badge">Contactos oficiales</div>
+      <div class="cover">
+        <div class="cover-content">
+          <div class="tag">Red oficial · Casino VIP</div>
 
-          <div class="logo-wrap">
-            <span class="logo-top">GOLD&BLACK</span>
-            <span class="logo-bottom">ROYAL SLOTS</span>
-            <div class="title-line"></div>
-          </div>
+          <div class="logo">GOLD&amp;BLACK</div>
 
-          <div class="sub">Tu acceso directo a nuestras redes</div>
+          <div class="headline">Contactos oficiales</div>
 
           <p class="desc">
             Todos nuestros contactos y redes oficiales en un solo lugar 🍀
           </p>
+        </div>
+      </div>
 
-          <div class="feature-row">
-            <div class="feature">
-              <strong>24 HS</strong>
-              <span>Atención online</span>
-            </div>
-            <div class="feature">
-              <strong>G&amp;B</strong>
-              <span>Red oficial</span>
-            </div>
-            <div class="feature">
-              <strong>+18</strong>
-              <span>Juego responsable</span>
-            </div>
+      <div class="panel">
+
+        <div class="stats">
+          <div class="stat">
+            <strong>24 HS</strong>
+            <span>Atención online</span>
           </div>
 
-          <div class="socials">
-            <a class="social wa" href="https://wa.me/5492233058333" target="_blank" aria-label="WhatsApp">☘</a>
-            <a class="social fb" href="https://www.facebook.com/" target="_blank" aria-label="Facebook">f</a>
-            <a class="social ig" href="https://www.instagram.com/mvaldez.z?igsh=MWR6djQ3ZnIxMjkwcQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">◎</a>
-            <a class="social tg" href="https://t.me/m/yCQpVAXZYTRh" target="_blank" aria-label="Telegram">✈</a>
+          <div class="stat">
+            <strong>G&amp;B</strong>
+            <span>Red oficial</span>
+          </div>
+
+          <div class="stat">
+            <strong>+18</strong>
+            <span>Juego responsable</span>
           </div>
         </div>
 
-        <div class="hero-right"></div>
+        <div class="socials">
+          <a class="social wa" href="https://wa.me/5492233058333" target="_blank" aria-label="WhatsApp">☘</a>
+          <a class="social fb" href="https://www.facebook.com/" target="_blank" aria-label="Facebook">f</a>
+          <a class="social ig" href="https://www.instagram.com/mvaldez.z?igsh=MWR6djQ3ZnIxMjkwcQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">◎</a>
+          <a class="social tg" href="https://t.me/m/yCQpVAXZYTRh" target="_blank" aria-label="Telegram">✈</a>
+        </div>
+
+        <section class="links">
+          <a class="btn" href="https://wa.me/5492233058333?text=Hola%20GOLD%26BLACK%2C%20quiero%20pedir%20mis%20fichas" target="_blank">
+            <div class="icon wa">☘</div>
+            <span class="text">WhatsApp Principal</span>
+          </a>
+
+          <a class="btn" href="https://wa.me/5492233543016?text=Hola%20GOLD%26BLACK%2C%20quiero%20activar%20mi%20usuario" target="_blank">
+            <div class="icon wa">☘</div>
+            <span class="text">Pedí tus fichas</span>
+          </a>
+
+          <a class="btn" href="https://www.facebook.com/" target="_blank">
+            <div class="icon fb">f</div>
+            <span class="text">Facebook Oficial</span>
+          </a>
+
+          <a class="btn" href="https://www.instagram.com/mvaldez.z?igsh=MWR6djQ3ZnIxMjkwcQ%3D%3D&utm_source=qr" target="_blank">
+            <div class="icon ig">◎</div>
+            <span class="text">Instagram Oficial</span>
+          </a>
+
+          <a class="btn" href="https://t.me/m/yCQpVAXZYTRh" target="_blank">
+            <div class="icon tg">✈</div>
+            <span class="text">Telegram Oficial</span>
+          </a>
+        </section>
 
       </div>
-    </section>
-
-    <section class="links">
-      <a class="btn" href="https://wa.me/5492233058333?text=Hola%20GOLD%26BLACK%2C%20quiero%20pedir%20mis%20fichas" target="_blank">
-        <div class="icon wa">☘</div>
-        <span class="text">WhatsApp Principal</span>
-      </a>
-
-      <a class="btn" href="https://wa.me/5492233543016?text=Hola%20GOLD%26BLACK%2C%20quiero%20activar%20mi%20usuario" target="_blank">
-        <div class="icon wa">☘</div>
-        <span class="text">Pedí tus fichas</span>
-      </a>
-
-      <a class="btn" href="https://www.facebook.com/" target="_blank">
-        <div class="icon fb">f</div>
-        <span class="text">Facebook Oficial</span>
-      </a>
-
-      <a class="btn" href="https://www.instagram.com/mvaldez.z?igsh=MWR6djQ3ZnIxMjkwcQ%3D%3D&utm_source=qr" target="_blank">
-        <div class="icon ig">◎</div>
-        <span class="text">Instagram Oficial</span>
-      </a>
-
-      <a class="btn" href="https://t.me/m/yCQpVAXZYTRh" target="_blank">
-        <div class="icon tg">✈</div>
-        <span class="text">Telegram Oficial</span>
-      </a>
     </section>
 
     <p class="footer">

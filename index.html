@@ -12,245 +12,213 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --bg-dark: #0a0714;
+      --bg-mid: #14112a;
+      --pink: #ff4fd8;
+      --pink-2: #ff7ae7;
+      --cyan: #42f5ff;
+      --cyan-2: #9ffcff;
+      --gold: #ffd86b;
+      --gold-deep: #ffb703;
+      --white: #ffffff;
+      --soft: rgba(255,255,255,0.78);
+      --panel: rgba(16, 13, 31, 0.72);
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 20px 50px rgba(0,0,0,0.45);
+    }
+
     body {
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      color: #ffffff;
+      color: var(--white);
       display: flex;
       justify-content: center;
-      padding: 26px 14px;
+      padding: 24px 14px;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 15% 10%, rgba(255, 215, 0, 0.35), transparent 25%),
-        radial-gradient(circle at 90% 15%, rgba(255, 0, 80, 0.22), transparent 28%),
-        radial-gradient(circle at 50% 100%, rgba(0, 255, 200, 0.16), transparent 32%),
-        linear-gradient(145deg, #020202 0%, #170800 42%, #000000 100%);
+        radial-gradient(circle at top left, rgba(255, 79, 216, 0.22), transparent 25%),
+        radial-gradient(circle at top right, rgba(66, 245, 255, 0.18), transparent 26%),
+        radial-gradient(circle at bottom center, rgba(255, 216, 107, 0.10), transparent 28%),
+        linear-gradient(135deg, #080510 0%, #120c23 45%, #05040b 100%);
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(255, 220, 90, 0.18) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 34px 34px, 42px 42px, 42px 42px;
-      opacity: 0.45;
       pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+      opacity: 0.55;
     }
 
     .page {
       width: 100%;
-      max-width: 860px;
+      max-width: 980px;
       position: relative;
       z-index: 1;
-    }
-
-    .casino-lights {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .casino-lights span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ffd75f;
-      box-shadow: 0 0 14px #ffd75f;
-      animation: blink 1.4s infinite alternate;
-    }
-
-    .casino-lights span:nth-child(2n) {
-      background: #ff2d75;
-      box-shadow: 0 0 14px #ff2d75;
-      animation-delay: .3s;
-    }
-
-    .casino-lights span:nth-child(3n) {
-      background: #00f5d4;
-      box-shadow: 0 0 14px #00f5d4;
-      animation-delay: .6s;
-    }
-
-    @keyframes blink {
-      from { opacity: .35; transform: scale(.85); }
-      to { opacity: 1; transform: scale(1.12); }
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      text-align: center;
-      padding: 38px 18px 30px;
       border-radius: 34px;
-      margin-bottom: 28px;
-      border: 1px solid rgba(255, 215, 90, 0.65);
+      border: 1px solid rgba(255,255,255,0.08);
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.94)),
-        url("https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=1400&q=80");
-      background-size: cover;
-      background-position: center;
+        linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        rgba(8, 7, 18, 0.78);
       box-shadow:
-        0 28px 75px rgba(0,0,0,0.82),
-        inset 0 0 70px rgba(255, 200, 60, 0.18),
-        0 0 42px rgba(255, 180, 40, 0.18);
+        0 30px 70px rgba(0,0,0,0.55),
+        0 0 35px rgba(255, 79, 216, 0.12),
+        0 0 35px rgba(66, 245, 255, 0.09);
+      padding: 26px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
     }
 
     .hero::before {
-      content: "777";
+      content: "";
       position: absolute;
-      top: 12px;
-      left: 18px;
-      font-size: 90px;
-      font-weight: 900;
-      color: rgba(255, 215, 90, 0.07);
-      text-shadow: 0 0 20px rgba(255, 215, 90, 0.18);
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 79, 216, 0.14), transparent 26%),
+        radial-gradient(circle at 85% 25%, rgba(66, 245, 255, 0.14), transparent 26%),
+        linear-gradient(120deg, transparent, rgba(255,255,255,0.04), transparent);
+      pointer-events: none;
     }
 
-    .hero::after {
-      content: "♠ ♥ ♦ ♣";
-      position: absolute;
-      bottom: 12px;
-      right: 18px;
-      font-size: 42px;
-      color: rgba(255, 255, 255, 0.10);
-      letter-spacing: 8px;
-    }
-
-    .slot-top {
+    .hero-inner {
       position: relative;
       z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .badge {
       display: inline-block;
-      padding: 8px 18px;
-      margin-bottom: 14px;
+      padding: 10px 18px;
       border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255,215,90,.22), rgba(255,255,255,.08));
-      border: 1px solid rgba(255, 215, 90, 0.55);
-      color: #ffe08a;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
-      box-shadow: 0 0 22px rgba(255, 215, 90, 0.20);
+      color: var(--cyan-2);
+      background: rgba(66, 245, 255, 0.10);
+      border: 1px solid rgba(66, 245, 255, 0.22);
+      box-shadow: 0 0 20px rgba(66, 245, 255, 0.10);
+      margin-bottom: 16px;
     }
 
     .logo {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(38px, 8vw, 74px);
-      font-weight: 1000;
-      line-height: 1;
-      letter-spacing: 1px;
-      color: #ffdc73;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      text-shadow:
-        0 0 8px rgba(255, 220, 115, 1),
-        0 0 25px rgba(255, 180, 40, 0.70),
-        0 6px 0 rgba(70, 35, 0, 0.95),
-        0 15px 28px rgba(0,0,0,0.95);
+      line-height: 0.95;
+      margin-bottom: 14px;
     }
 
-    .logo span {
-      color: #ffffff;
+    .logo-main {
+      display: block;
+      font-size: clamp(42px, 7vw, 84px);
+      font-weight: 1000;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #fff4ff 0%, #ff8df0 28%, #ff4fd8 55%, #8b2cff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       text-shadow:
-        0 0 8px rgba(255,255,255,0.95),
-        0 0 22px rgba(255, 215, 90, 0.60),
-        0 6px 0 rgba(0,0,0,0.90);
+        0 1px 0 rgba(255,255,255,0.2),
+        0 3px 0 #7d0e61,
+        0 5px 0 #620a4c,
+        0 8px 18px rgba(0,0,0,0.50),
+        0 0 20px rgba(255, 79, 216, 0.35);
+      filter: drop-shadow(0 0 18px rgba(255, 79, 216, 0.24));
+    }
+
+    .logo-sub {
+      display: block;
+      margin-top: 4px;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 1000;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff 0%, #c5feff 35%, #42f5ff 65%, #1598c3 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,0.2),
+        0 3px 0 #0b6d78,
+        0 5px 0 #06464d,
+        0 8px 18px rgba(0,0,0,0.48),
+        0 0 18px rgba(66, 245, 255, 0.32);
+      filter: drop-shadow(0 0 16px rgba(66, 245, 255, 0.18));
     }
 
     .sub {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(18px, 4vw, 26px);
+      font-size: clamp(18px, 3vw, 28px);
       font-weight: 900;
-      color: #ffffff;
+      color: var(--gold);
       margin-bottom: 10px;
-      text-shadow: 0 3px 12px #000;
+      text-shadow:
+        0 2px 0 rgba(90, 50, 0, 0.9),
+        0 0 12px rgba(255, 216, 107, 0.30);
     }
 
     .desc {
-      position: relative;
-      z-index: 1;
-      max-width: 580px;
-      margin: 0 auto 22px;
-      font-size: clamp(15px, 3.3vw, 19px);
-      line-height: 1.45;
-      color: rgba(255,255,255,0.94);
-      text-shadow: 0 3px 10px #000;
+      max-width: 540px;
+      font-size: clamp(15px, 2.4vw, 18px);
+      line-height: 1.5;
+      color: var(--soft);
+      margin-bottom: 22px;
     }
 
-    .slot-machine {
-      position: relative;
-      z-index: 1;
-      max-width: 430px;
-      margin: 0 auto 26px;
-      padding: 12px;
-      border-radius: 24px;
-      background:
-        linear-gradient(145deg, #3b2100, #080808),
-        linear-gradient(90deg, #ffd76a, #8a5200);
-      border: 1px solid rgba(255, 215, 90, 0.65);
-      box-shadow:
-        0 16px 35px rgba(0,0,0,0.55),
-        inset 0 0 24px rgba(255,215,90,0.16);
-    }
-
-    .reels {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .mini-info {
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
+      margin-bottom: 20px;
     }
 
-    .reel {
-      min-height: 82px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      font-size: 38px;
-      font-weight: 900;
-      background:
-        linear-gradient(to bottom, #fff8df, #ffd66b 45%, #a85d00);
-      color: #1c0c00;
-      border: 2px solid rgba(255,255,255,0.55);
-      box-shadow:
-        inset 0 4px 14px rgba(255,255,255,0.65),
-        inset 0 -8px 18px rgba(0,0,0,0.28),
-        0 0 14px rgba(255,215,90,0.30);
+    .mini-pill {
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.88);
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.03);
     }
 
     .socials {
-      position: relative;
-      z-index: 1;
       display: flex;
-      justify-content: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .social {
-      width: 62px;
-      height: 62px;
-      border-radius: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
       color: white;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 900;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.32);
-      box-shadow:
-        0 13px 26px rgba(0,0,0,0.50),
-        inset 0 0 14px rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--shadow);
       transition: 0.25s ease;
     }
 
     .social:hover {
-      transform: translateY(-5px) scale(1.07);
-      filter: brightness(1.18);
+      transform: translateY(-4px) scale(1.04);
+      filter: brightness(1.14);
     }
 
     .wa { background: linear-gradient(135deg, #128c4a, #25D366); }
@@ -258,9 +226,54 @@
     .ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
     .tg { background: linear-gradient(135deg, #0077b6, #229ED9); }
 
+    .hero-art {
+      position: relative;
+      min-height: 520px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(to top, rgba(7, 7, 18, 0.88), rgba(7, 7, 18, 0.18)),
+        url("REEMPLAZA_AQUI_LA_IMAGEN_DEL_REY.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow:
+        0 24px 60px rgba(0,0,0,0.45),
+        inset 0 0 40px rgba(255,255,255,0.04),
+        0 0 24px rgba(255, 79, 216, 0.10);
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(5,5,10,0.95), rgba(5,5,10,0.10)),
+        radial-gradient(circle at bottom left, rgba(255,79,216,0.25), transparent 25%),
+        radial-gradient(circle at top right, rgba(66,245,255,0.18), transparent 25%);
+      pointer-events: none;
+    }
+
+    .hero-art::after {
+      content: "REY DEL SLOT";
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      z-index: 2;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      background: rgba(0,0,0,0.48);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(6px);
+    }
+
     .links {
       display: grid;
-      gap: 17px;
+      gap: 16px;
     }
 
     .btn {
@@ -268,20 +281,20 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      min-height: 82px;
-      padding: 13px 54px 13px 14px;
+      min-height: 80px;
+      padding: 14px 56px 14px 14px;
       color: #ffffff;
       text-decoration: none;
-      border-radius: 26px;
+      border-radius: 24px;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.11), rgba(255,255,255,0.03)),
-        linear-gradient(90deg, #060606 0%, #1b0d03 45%, #7a4700 100%);
-      border: 1px solid rgba(255, 215, 90, 0.52);
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        linear-gradient(90deg, rgba(17,12,33,0.96), rgba(19,20,45,0.98));
+      border: 1px solid rgba(255,255,255,0.08);
       box-shadow:
-        0 16px 36px rgba(0,0,0,0.58),
-        inset 0 0 24px rgba(255, 215, 90, 0.10);
-      backdrop-filter: blur(8px);
+        0 16px 34px rgba(0,0,0,0.45),
+        inset 0 0 18px rgba(255,255,255,0.03);
+      backdrop-filter: blur(10px);
       transition: 0.25s ease;
     }
 
@@ -289,45 +302,50 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.16), transparent);
-      transform: translateX(-110%);
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.10), transparent);
+      transform: translateX(-115%);
       transition: 0.35s ease;
     }
 
     .btn::after {
-      content: "🎰";
+      content: "➜";
       position: absolute;
-      right: 18px;
-      font-size: 25px;
-      filter: drop-shadow(0 0 10px rgba(255,215,90,0.85));
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--gold);
+      text-shadow: 0 0 14px rgba(255, 216, 107, 0.5);
     }
 
     .btn:hover {
       transform: translateY(-4px);
-      border-color: rgba(255, 215, 90, 0.95);
+      border-color: rgba(255,255,255,0.14);
       box-shadow:
-        0 22px 46px rgba(0,0,0,0.68),
-        0 0 30px rgba(255, 215, 90, 0.24);
+        0 22px 44px rgba(0,0,0,0.58),
+        0 0 18px rgba(66,245,255,0.10),
+        0 0 18px rgba(255,79,216,0.08);
     }
 
     .btn:hover::before {
-      transform: translateX(110%);
+      transform: translateX(120%);
     }
 
     .icon {
       position: relative;
       z-index: 1;
-      min-width: 58px;
-      width: 58px;
-      height: 58px;
-      border-radius: 20px;
+      min-width: 56px;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      font-size: 29px;
+      font-size: 28px;
       font-weight: 900;
       box-shadow:
-        0 10px 20px rgba(0,0,0,0.42),
-        inset 0 0 13px rgba(255,255,255,0.18);
+        0 10px 18px rgba(0,0,0,0.34),
+        inset 0 0 12px rgba(255,255,255,0.10);
     }
 
     .text {
@@ -335,52 +353,33 @@
       z-index: 1;
       flex: 1;
       text-align: center;
-      font-size: clamp(18px, 4vw, 25px);
+      font-size: clamp(18px, 3vw, 24px);
       font-weight: 900;
       letter-spacing: 0.3px;
-      text-shadow: 0 3px 10px #000;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.55);
     }
 
     .footer {
-      margin-top: 28px;
+      margin-top: 24px;
       padding: 18px 14px;
       text-align: center;
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,0.76);
       font-size: 13px;
       line-height: 1.45;
-      border-radius: 22px;
-      background: rgba(0,0,0,0.42);
-      border: 1px solid rgba(255,215,90,0.20);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.34);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.28);
     }
 
-    .coins {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
 
-    .coin {
-      position: absolute;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #fff2a6, #ffd34f 45%, #a85c00);
-      box-shadow: 0 0 14px rgba(255,215,90,0.45);
-      opacity: 0.55;
-      animation: floatCoin 8s infinite linear;
-    }
-
-    .coin:nth-child(1) { left: 8%; animation-delay: 0s; }
-    .coin:nth-child(2) { left: 28%; animation-delay: 2s; }
-    .coin:nth-child(3) { left: 62%; animation-delay: 4s; }
-    .coin:nth-child(4) { left: 84%; animation-delay: 1s; }
-
-    @keyframes floatCoin {
-      from { top: 105%; transform: rotate(0deg); }
-      to { top: -10%; transform: rotate(360deg); }
+      .hero-art {
+        min-height: 420px;
+      }
     }
 
     @media (max-width: 520px) {
@@ -389,27 +388,27 @@
       }
 
       .hero {
-        padding: 32px 14px 26px;
-        border-radius: 26px;
+        padding: 18px;
+        border-radius: 24px;
       }
 
-      .reel {
-        min-height: 72px;
-        font-size: 33px;
+      .hero-art {
+        min-height: 340px;
+        border-radius: 22px;
       }
 
       .social {
-        width: 54px;
-        height: 54px;
-        border-radius: 18px;
-        font-size: 26px;
+        width: 52px;
+        height: 52px;
+        font-size: 25px;
+        border-radius: 16px;
       }
 
       .btn {
-        min-height: 74px;
-        border-radius: 21px;
+        min-height: 72px;
+        border-radius: 20px;
         gap: 12px;
-        padding: 12px 46px 12px 12px;
+        padding: 12px 44px 12px 12px;
       }
 
       .btn::after {
@@ -421,7 +420,7 @@
         width: 50px;
         height: 50px;
         min-width: 50px;
-        border-radius: 17px;
+        border-radius: 16px;
         font-size: 25px;
       }
     }
@@ -429,45 +428,41 @@
 </head>
 
 <body>
-  <div class="coins">
-    <span class="coin"></span>
-    <span class="coin"></span>
-    <span class="coin"></span>
-    <span class="coin"></span>
-  </div>
-
   <main class="page">
-    <div class="casino-lights">
-      <span></span><span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
 
     <section class="hero">
-      <div class="slot-top">Contactos oficiales</div>
+      <div class="hero-inner">
 
-      <div class="logo">
-        GOLD<span>&amp;</span>BLACK
-      </div>
+        <div class="hero-copy">
+          <div class="badge">Contactos oficiales</div>
 
-      <div class="sub">Contactos oficiales</div>
+          <div class="logo">
+            <span class="logo-main">GOLD&BLACK</span>
+            <span class="logo-sub">SLOTS CLUB</span>
+          </div>
 
-      <p class="desc">
-        Todos nuestros contactos y redes oficiales en un solo lugar 🍀
-      </p>
+          <div class="sub">Tu acceso directo a nuestras redes</div>
 
-      <div class="slot-machine">
-        <div class="reels">
-          <div class="reel">🍒</div>
-          <div class="reel">7️⃣</div>
-          <div class="reel">💎</div>
+          <p class="desc">
+            Todos nuestros contactos y redes oficiales en un solo lugar 🍀
+          </p>
+
+          <div class="mini-info">
+            <div class="mini-pill">Atención online</div>
+            <div class="mini-pill">Red oficial</div>
+            <div class="mini-pill">+18</div>
+          </div>
+
+          <div class="socials">
+            <a class="social wa" href="https://wa.me/5492233058333" target="_blank" aria-label="WhatsApp">☘</a>
+            <a class="social fb" href="https://www.facebook.com/" target="_blank" aria-label="Facebook">f</a>
+            <a class="social ig" href="https://www.instagram.com/mvaldez.z?igsh=MWR6djQ3ZnIxMjkwcQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">◎</a>
+            <a class="social tg" href="https://t.me/m/yCQpVAXZYTRh" target="_blank" aria-label="Telegram">✈</a>
+          </div>
         </div>
-      </div>
 
-      <div class="socials">
-        <a class="social wa" href="https://wa.me/5492233058333" target="_blank" aria-label="WhatsApp">☘</a>
-        <a class="social fb" href="https://www.facebook.com/" target="_blank" aria-label="Facebook">f</a>
-        <a class="social ig" href="https://www.instagram.com/mvaldez.z?igsh=MWR6djQ3ZnIxMjkwcQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">◎</a>
-        <a class="social tg" href="https://t.me/m/yCQpVAXZYTRh" target="_blank" aria-label="Telegram">✈</a>
+        <div class="hero-art"></div>
+
       </div>
     </section>
 
@@ -502,6 +497,7 @@
       GOLD&amp;BLACK · Atención online<br>
       Prohibido para menores de 18 años. El juego compulsivo es perjudicial para la salud.
     </p>
+
   </main>
 </body>
 </html>

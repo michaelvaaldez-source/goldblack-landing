@@ -13,19 +13,20 @@
     }
 
     :root {
-      --bg-dark: #0a0714;
-      --bg-mid: #14112a;
-      --pink: #ff4fd8;
-      --pink-2: #ff7ae7;
-      --cyan: #42f5ff;
-      --cyan-2: #9ffcff;
-      --gold: #ffd86b;
-      --gold-deep: #ffb703;
+      --bg-1: #06040c;
+      --bg-2: #120b24;
+      --bg-3: #0a0914;
+      --pink: #ff4fcf;
+      --pink-2: #ff9ce9;
+      --cyan: #38f5ff;
+      --cyan-2: #b7fcff;
+      --gold: #ffd56e;
+      --gold-2: #ffb938;
       --white: #ffffff;
       --soft: rgba(255,255,255,0.78);
-      --panel: rgba(16, 13, 31, 0.72);
-      --border: rgba(255,255,255,0.10);
-      --shadow: 0 20px 50px rgba(0,0,0,0.45);
+      --panel: rgba(16, 12, 30, 0.68);
+      --line: rgba(255,255,255,0.10);
+      --shadow: 0 22px 55px rgba(0,0,0,0.45);
     }
 
     body {
@@ -37,10 +38,10 @@
       padding: 24px 14px;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top left, rgba(255, 79, 216, 0.22), transparent 25%),
-        radial-gradient(circle at top right, rgba(66, 245, 255, 0.18), transparent 26%),
-        radial-gradient(circle at bottom center, rgba(255, 216, 107, 0.10), transparent 28%),
-        linear-gradient(135deg, #080510 0%, #120c23 45%, #05040b 100%);
+        radial-gradient(circle at 10% 10%, rgba(255, 79, 207, 0.18), transparent 23%),
+        radial-gradient(circle at 90% 10%, rgba(56, 245, 255, 0.15), transparent 22%),
+        radial-gradient(circle at 50% 100%, rgba(255, 213, 110, 0.10), transparent 26%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
     }
 
     body::before {
@@ -51,14 +52,25 @@
       background:
         linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
-      opacity: 0.55;
+      background-size: 34px 34px;
+      opacity: 0.45;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(255,79,207,0.14), transparent 18%),
+        radial-gradient(circle at 75% 25%, rgba(56,245,255,0.10), transparent 16%);
+      filter: blur(30px);
     }
 
     .page {
       width: 100%;
-      max-width: 980px;
+      max-width: 1040px;
       position: relative;
       z-index: 1;
     }
@@ -66,16 +78,16 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border-radius: 34px;
+      border-radius: 36px;
       border: 1px solid rgba(255,255,255,0.08);
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        rgba(8, 7, 18, 0.78);
+        linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        rgba(8, 7, 19, 0.74);
       box-shadow:
-        0 30px 70px rgba(0,0,0,0.55),
-        0 0 35px rgba(255, 79, 216, 0.12),
-        0 0 35px rgba(66, 245, 255, 0.09);
-      padding: 26px;
+        0 30px 80px rgba(0,0,0,0.55),
+        0 0 32px rgba(255,79,207,0.10),
+        0 0 28px rgba(56,245,255,0.08);
+      padding: 18px;
       margin-bottom: 24px;
       backdrop-filter: blur(12px);
     }
@@ -84,11 +96,11 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255, 79, 216, 0.14), transparent 26%),
-        radial-gradient(circle at 85% 25%, rgba(66, 245, 255, 0.14), transparent 26%),
-        linear-gradient(120deg, transparent, rgba(255,255,255,0.04), transparent);
       pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,79,207,0.12), transparent 24%),
+        radial-gradient(circle at 85% 22%, rgba(56,245,255,0.10), transparent 24%),
+        linear-gradient(120deg, transparent, rgba(255,255,255,0.04), transparent);
     }
 
     .hero-inner {
@@ -96,103 +108,181 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      align-items: center;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-left,
+    .hero-right {
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-left {
+      padding: 30px 26px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        rgba(11, 9, 24, 0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 0 24px rgba(255,255,255,0.03);
+    }
+
+    .hero-right {
+      min-height: 620px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(to top, rgba(8, 8, 18, 0.95), rgba(8, 8, 18, 0.20)),
+        url("rey-slot.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow:
+        0 24px 60px rgba(0,0,0,0.35),
+        inset 0 0 38px rgba(255,255,255,0.04);
+    }
+
+    .hero-right::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 25% 75%, rgba(255,79,207,0.22), transparent 20%),
+        radial-gradient(circle at 80% 15%, rgba(56,245,255,0.18), transparent 22%);
+    }
+
+    .hero-right::after {
+      content: "ROYAL SLOTS";
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
     }
 
     .badge {
       display: inline-block;
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--cyan-2);
-      background: rgba(66, 245, 255, 0.10);
-      border: 1px solid rgba(66, 245, 255, 0.22);
-      box-shadow: 0 0 20px rgba(66, 245, 255, 0.10);
+      background: rgba(56,245,255,0.10);
+      border: 1px solid rgba(56,245,255,0.18);
+      box-shadow: 0 0 18px rgba(56,245,255,0.10);
       margin-bottom: 16px;
     }
 
-    .logo {
-      line-height: 0.95;
+    .logo-wrap {
       margin-bottom: 14px;
     }
 
-    .logo-main {
+    .logo-top {
       display: block;
       font-size: clamp(42px, 7vw, 84px);
       font-weight: 1000;
+      line-height: 0.94;
       letter-spacing: 1px;
       text-transform: uppercase;
-      background: linear-gradient(180deg, #fff4ff 0%, #ff8df0 28%, #ff4fd8 55%, #8b2cff 100%);
+      background: linear-gradient(180deg, #ffe9ff 0%, #ff94ea 22%, #ff4fcf 55%, #8228ff 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-shadow:
-        0 1px 0 rgba(255,255,255,0.2),
-        0 3px 0 #7d0e61,
-        0 5px 0 #620a4c,
-        0 8px 18px rgba(0,0,0,0.50),
-        0 0 20px rgba(255, 79, 216, 0.35);
-      filter: drop-shadow(0 0 18px rgba(255, 79, 216, 0.24));
+        0 2px 0 rgba(255,255,255,0.15),
+        0 4px 0 #8d1367,
+        0 7px 0 #65084a,
+        0 10px 18px rgba(0,0,0,0.45),
+        0 0 24px rgba(255,79,207,0.34);
+      filter: drop-shadow(0 0 20px rgba(255,79,207,0.18));
     }
 
-    .logo-sub {
-      display: block;
-      margin-top: 4px;
-      font-size: clamp(24px, 4vw, 42px);
+    .logo-bottom {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: clamp(26px, 4vw, 44px);
       font-weight: 1000;
-      letter-spacing: 2px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      background: linear-gradient(180deg, #ffffff 0%, #c5feff 35%, #42f5ff 65%, #1598c3 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #d7feff 30%, #58f7ff 62%, #0e9fcb 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-shadow:
-        0 1px 0 rgba(255,255,255,0.2),
-        0 3px 0 #0b6d78,
-        0 5px 0 #06464d,
-        0 8px 18px rgba(0,0,0,0.48),
-        0 0 18px rgba(66, 245, 255, 0.32);
-      filter: drop-shadow(0 0 16px rgba(66, 245, 255, 0.18));
+        0 2px 0 rgba(255,255,255,0.14),
+        0 4px 0 #0c6c79,
+        0 7px 0 #06454d,
+        0 10px 18px rgba(0,0,0,0.42),
+        0 0 22px rgba(56,245,255,0.30);
+    }
+
+    .title-line {
+      width: 170px;
+      height: 4px;
+      margin: 16px 0 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--pink), var(--cyan), transparent);
+      box-shadow:
+        0 0 14px rgba(255,79,207,0.45),
+        0 0 14px rgba(56,245,255,0.35);
     }
 
     .sub {
-      font-size: clamp(18px, 3vw, 28px);
+      font-size: clamp(18px, 2.8vw, 28px);
       font-weight: 900;
       color: var(--gold);
       margin-bottom: 10px;
       text-shadow:
-        0 2px 0 rgba(90, 50, 0, 0.9),
-        0 0 12px rgba(255, 216, 107, 0.30);
+        0 2px 0 rgba(100, 58, 0, 0.85),
+        0 0 10px rgba(255, 213, 110, 0.28);
     }
 
     .desc {
-      max-width: 540px;
-      font-size: clamp(15px, 2.4vw, 18px);
-      line-height: 1.5;
+      max-width: 560px;
+      font-size: clamp(15px, 2.3vw, 18px);
+      line-height: 1.55;
       color: var(--soft);
-      margin-bottom: 22px;
-    }
-
-    .mini-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
       margin-bottom: 20px;
     }
 
-    .mini-pill {
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.05);
+    .feature-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .feature {
+      padding: 14px 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
+      text-align: center;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 18px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .feature span {
       font-size: 13px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.88);
-      box-shadow: inset 0 0 10px rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.78);
+      font-weight: 700;
     }
 
     .socials {
@@ -211,8 +301,10 @@
       font-size: 28px;
       font-weight: 900;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 14px 24px rgba(0,0,0,0.34),
+        inset 0 0 12px rgba(255,255,255,0.08);
       transition: 0.25s ease;
     }
 
@@ -226,51 +318,6 @@
     .ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
     .tg { background: linear-gradient(135deg, #0077b6, #229ED9); }
 
-    .hero-art {
-      position: relative;
-      min-height: 520px;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      background:
-        linear-gradient(to top, rgba(7, 7, 18, 0.88), rgba(7, 7, 18, 0.18)),
-        url("REEMPLAZA_AQUI_LA_IMAGEN_DEL_REY.jpg");
-      background-size: cover;
-      background-position: center;
-      box-shadow:
-        0 24px 60px rgba(0,0,0,0.45),
-        inset 0 0 40px rgba(255,255,255,0.04),
-        0 0 24px rgba(255, 79, 216, 0.10);
-    }
-
-    .hero-art::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(5,5,10,0.95), rgba(5,5,10,0.10)),
-        radial-gradient(circle at bottom left, rgba(255,79,216,0.25), transparent 25%),
-        radial-gradient(circle at top right, rgba(66,245,255,0.18), transparent 25%);
-      pointer-events: none;
-    }
-
-    .hero-art::after {
-      content: "REY DEL SLOT";
-      position: absolute;
-      left: 18px;
-      bottom: 16px;
-      z-index: 2;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #fff;
-      background: rgba(0,0,0,0.48);
-      border: 1px solid rgba(255,255,255,0.14);
-      backdrop-filter: blur(6px);
-    }
-
     .links {
       display: grid;
       gap: 16px;
@@ -281,19 +328,19 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      min-height: 80px;
+      min-height: 82px;
       padding: 14px 56px 14px 14px;
       color: #ffffff;
       text-decoration: none;
       border-radius: 24px;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
-        linear-gradient(90deg, rgba(17,12,33,0.96), rgba(19,20,45,0.98));
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        linear-gradient(90deg, rgba(15,11,30,0.95), rgba(17,17,39,0.98));
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow:
-        0 16px 34px rgba(0,0,0,0.45),
-        inset 0 0 18px rgba(255,255,255,0.03);
+        0 18px 38px rgba(0,0,0,0.42),
+        inset 0 0 16px rgba(255,255,255,0.03);
       backdrop-filter: blur(10px);
       transition: 0.25s ease;
     }
@@ -316,16 +363,16 @@
       font-size: 26px;
       font-weight: 900;
       color: var(--gold);
-      text-shadow: 0 0 14px rgba(255, 216, 107, 0.5);
+      text-shadow: 0 0 14px rgba(255,213,110,0.45);
     }
 
     .btn:hover {
       transform: translateY(-4px);
       border-color: rgba(255,255,255,0.14);
       box-shadow:
-        0 22px 44px rgba(0,0,0,0.58),
-        0 0 18px rgba(66,245,255,0.10),
-        0 0 18px rgba(255,79,216,0.08);
+        0 22px 46px rgba(0,0,0,0.52),
+        0 0 18px rgba(255,79,207,0.10),
+        0 0 18px rgba(56,245,255,0.08);
     }
 
     .btn:hover::before {
@@ -344,8 +391,8 @@
       font-size: 28px;
       font-weight: 900;
       box-shadow:
-        0 10px 18px rgba(0,0,0,0.34),
-        inset 0 0 12px rgba(255,255,255,0.10);
+        0 10px 18px rgba(0,0,0,0.30),
+        inset 0 0 12px rgba(255,255,255,0.08);
     }
 
     .text {
@@ -369,32 +416,44 @@
       border-radius: 18px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.07);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.28);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.26);
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
       .hero-inner {
         grid-template-columns: 1fr;
       }
 
-      .hero-art {
+      .hero-right {
         min-height: 420px;
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 560px) {
       body {
         padding: 18px 10px;
       }
 
       .hero {
-        padding: 18px;
+        padding: 14px;
         border-radius: 24px;
       }
 
-      .hero-art {
-        min-height: 340px;
+      .hero-left,
+      .hero-right {
         border-radius: 22px;
+      }
+
+      .hero-left {
+        padding: 22px 16px;
+      }
+
+      .hero-right {
+        min-height: 320px;
+      }
+
+      .feature-row {
+        grid-template-columns: 1fr;
       }
 
       .social {
@@ -433,12 +492,13 @@
     <section class="hero">
       <div class="hero-inner">
 
-        <div class="hero-copy">
+        <div class="hero-left">
           <div class="badge">Contactos oficiales</div>
 
-          <div class="logo">
-            <span class="logo-main">GOLD&BLACK</span>
-            <span class="logo-sub">SLOTS CLUB</span>
+          <div class="logo-wrap">
+            <span class="logo-top">GOLD&BLACK</span>
+            <span class="logo-bottom">ROYAL SLOTS</span>
+            <div class="title-line"></div>
           </div>
 
           <div class="sub">Tu acceso directo a nuestras redes</div>
@@ -447,10 +507,19 @@
             Todos nuestros contactos y redes oficiales en un solo lugar 🍀
           </p>
 
-          <div class="mini-info">
-            <div class="mini-pill">Atención online</div>
-            <div class="mini-pill">Red oficial</div>
-            <div class="mini-pill">+18</div>
+          <div class="feature-row">
+            <div class="feature">
+              <strong>24 HS</strong>
+              <span>Atención online</span>
+            </div>
+            <div class="feature">
+              <strong>G&amp;B</strong>
+              <span>Red oficial</span>
+            </div>
+            <div class="feature">
+              <strong>+18</strong>
+              <span>Juego responsable</span>
+            </div>
           </div>
 
           <div class="socials">
@@ -461,7 +530,7 @@
           </div>
         </div>
 
-        <div class="hero-art"></div>
+        <div class="hero-right"></div>
 
       </div>
     </section>

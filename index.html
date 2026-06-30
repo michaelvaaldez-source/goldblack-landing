@@ -184,7 +184,100 @@
       .btn { min-height: 68px; padding-right: 18px; gap: 12px; }
       .icon { width: 48px; height: 48px; min-width: 48px; font-size: 26px; }
     }
-  </style>
+  </style>body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #fff;
+  background:
+    radial-gradient(circle at top, rgba(255, 215, 0, 0.22), transparent 35%),
+    radial-gradient(circle at bottom, rgba(0, 255, 170, 0.18), transparent 30%),
+    linear-gradient(135deg, #050505 0%, #111111 45%, #000000 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.18;
+  pointer-events: none;
+  animation: fondoBrillo 8s linear infinite;
+}
+
+@keyframes fondoBrillo {
+  from { transform: translateY(0); }
+  to { transform: translateY(-40px); }
+}
+
+.container,
+main,
+section {
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+.title {
+  color: #ffd700;
+  text-shadow:
+    0 0 8px rgba(255, 215, 0, 0.9),
+    0 0 25px rgba(255, 215, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+h2,
+p {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+a,
+button {
+  transition: all 0.25s ease;
+}
+
+a[href*="wa.me"],
+.whatsapp,
+.btn,
+button {
+  border-radius: 18px !important;
+  box-shadow:
+    0 0 18px rgba(0, 255, 120, 0.45),
+    inset 0 0 10px rgba(255,255,255,0.18);
+  transform: translateY(0);
+}
+
+a[href*="wa.me"]:hover,
+.whatsapp:hover,
+.btn:hover,
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 0 28px rgba(0, 255, 120, 0.75),
+    0 0 45px rgba(255, 215, 0, 0.35);
+}
+
+a[href*="facebook"],
+a[href*="instagram"],
+a[href*="t.me"] {
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.18);
+}
+
+img {
+  filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.35));
+}
+
+footer,
+.disclaimer {
+  opacity: 0.9;
+  font-size: 13px;
+  color: #d6d6d6;
+}
 </head>
 <body>
   <main class="page">
